@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-
+import { BackandServiceClass } from '../../app/services/backand.service';
 import { ItemCreatePage } from '../item-create/item-create';
 import { ItemDetailPage } from '../item-detail/item-detail';
-
+import { LoginPage} from '../login/login';
 import { Items } from '../../providers/providers';
 
 import { Item } from '../../models/item';
@@ -14,11 +14,30 @@ import { Item } from '../../models/item';
 })
 export class ListMasterPage {
   currentItems: Item[];
+  tag: Item[];
+  testData = "Initial";
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, private backand: BackandServiceClass) {
     this.currentItems = this.items.query();
+    
+    backand.getTodayTagsData();
   }
 
+  ngOnInit() {
+    this.backand.getTodayTagsData()
+    //.subscribe(data => {console.log(data);});
+    .then(response => {
+      console.log(response.data.length);
+      this.testData = response.data.length;
+    });
+    
+  }
+
+  showItems () {
+    console.log(this.tag);
+    this.backand.destroyUserCredentials();
+    this.navCtrl.push(LoginPage);
+  }
   /**
    * The view loaded, let's query our items for the list
    */

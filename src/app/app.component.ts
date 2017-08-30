@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, Config } from 'ionic-angular';
-
+import { BackandServiceClass } from './services/backand.service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -17,7 +17,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
-
+import 'rxjs/Rx';
 import { Settings } from '../providers/providers';
 
 import { TranslateService } from '@ngx-translate/core'
@@ -39,15 +39,17 @@ import { TranslateService } from '@ngx-translate/core'
     </ion-content>
 
   </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`
+  <ion-nav #content [root]="rootPage"></ion-nav>`,
+  providers: [BackandServiceClass]
 })
 export class MyApp {
   rootPage = FirstRunPage;
+  res: string;
 
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: TutorialPage },
+   // { title: 'Tutorial', component: TutorialPage },
     { title: 'Welcome', component: WelcomePage },
     { title: 'Tabs', component: TabsPage },
     { title: 'Cards', component: CardsPage },
@@ -61,9 +63,12 @@ export class MyApp {
     { title: 'Search', component: SearchPage }
   ]
 
-  constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private backand: BackandServiceClass, private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     this.initTranslate();
+    this.backand.ngOnInit();
   }
+
+
 
   ionViewDidLoad() {
     this.platform.ready().then(() => {
@@ -71,6 +76,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
   }
 
@@ -95,3 +101,8 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 }
+
+
+
+
+
