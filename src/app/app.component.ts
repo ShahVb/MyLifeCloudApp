@@ -7,11 +7,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
 import { FirstRunPage } from '../pages/pages';
-import { ListMasterPage } from '../pages/list-master/list-master';
+import { TodayPage } from '../pages/today/today';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
-import { SearchPage } from '../pages/search/search';
+import { WordCloudPage } from '../pages/WordCloud/WordCloud';
 import { SettingsPage } from '../pages/settings/settings';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -22,7 +22,9 @@ import { Settings } from '../providers/providers';
 
 import { TranslateService } from '@ngx-translate/core'
 
+
 @Component({
+  selector: 'app-root',
   template: `<ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
@@ -45,7 +47,7 @@ import { TranslateService } from '@ngx-translate/core'
 export class MyApp {
   rootPage = FirstRunPage;
   res: string;
-
+  
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
@@ -57,10 +59,10 @@ export class MyApp {
     { title: 'Login', component: LoginPage },
     { title: 'Signup', component: SignupPage },
     { title: 'Map', component: MapPage },
-    { title: 'Master Detail', component: ListMasterPage },
+    { title: 'Today', component: TodayPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage }
+    { title: 'WordCloud', component: WordCloudPage }
   ]
 
   constructor(private backand: BackandServiceClass, private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {

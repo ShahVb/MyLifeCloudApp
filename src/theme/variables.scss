@@ -25,13 +25,51 @@ $background-color:  #fff;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #FF9B48,
+  secondary:  #87DB30,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
 
+//CUSTOM STYLES STARTS
+
+.header1 {
+  text-align: center;
+  color: #87DB30;
+  font-size: large;
+  margin-bottom: 0%;
+  };
+
+.header2 {
+  text-align: center;
+  color: #87DB30;
+  font-size: large;
+};
+
+.inputbox1 {
+padding-left: 5%;
+padding-right:5%;
+margin: 2%;
+margin-top: 2%;
+margin-bottom: 2%;
+border-style: solid;
+border-width: 0.5px;
+};
+
+.button {
+margin-left: 10%;
+margin-right: 10%;
+font-size: large;
+text-align: center;  
+}
+
+.primaryColor {
+  color: #FF9B48 !important;
+  text-decoration-color: #FF9B48;
+}
+
+//CUSTOM STYLES ENDS
 
 // App iOS Variables
 // --------------------------------------------------

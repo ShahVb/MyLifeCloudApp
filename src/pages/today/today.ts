@@ -6,16 +6,19 @@ import { ItemDetailPage } from '../item-detail/item-detail';
 import { LoginPage} from '../login/login';
 import { Items } from '../../providers/providers';
 
+
 import { Item } from '../../models/item';
 
 @Component({
-  selector: 'page-list-master',
-  templateUrl: 'list-master.html'
+  selector: 'page-today',
+  templateUrl: 'today.html'
 })
-export class ListMasterPage {
+export class TodayPage {
   currentItems: Item[];
   tag: Item[];
   testData = "Initial";
+  entryLogLove = [{date: "", name: "1"}, {date: "", name: "2"}, {date: "", name: "3"}, {date: "", name: "4"}, {date: "", name: ""}];
+  entryLogAvoid = [{date: "", name: "1"}, {date: "", name: "2"}, {date: "", name: "3"}, {date: "", name: "4"}, {date: "", name: ""}];
 
   constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, private backand: BackandServiceClass) {
     this.currentItems = this.items.query();
@@ -24,6 +27,7 @@ export class ListMasterPage {
   }
 
   ngOnInit() {
+    console.log(this.entryLogLove[0].name);
     this.backand.getTodayTagsData()
     //.subscribe(data => {console.log(data);});
     .then(response => {

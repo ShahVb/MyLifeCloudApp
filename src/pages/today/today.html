@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+      
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        
+    <ion-title><p class="primaryColor">My Word Cloud</p></ion-title>
+
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content >
+  <p class="header1">What did you love doing today?</p>
+  
+  <ion-list style="margin: 0;">
+    <ion-item no-lines *ngFor="let item of entryLogLove">
+      <ion-input class="inputbox1" type="text" ng-model="item.name"> </ion-input>
+      </ion-item>
+  </ion-list>
+
+  <!-- <ion-list>
+    <ion-item-sliding *ngFor="let item of currentItems">
+      <button ion-item (click)="openItem(item)">
+        <ion-avatar item-start>
+          <img [src]="item.profilePic" />
+        </ion-avatar>
+        <h2>{{item.name}}</h2>
+        <p>{{item.about}}</p>
+        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
+      </button>
+
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list> -->
+  
+  <p class="header1">What did you want to avoid?</p>
+  
+  <ion-list style="margin: 0;" >
+    <ion-item no-lines *ngFor="let item of entryLogAvoid">
+      <ion-input class="inputbox1" type="text" ng-model="item.name"> </ion-input>
+      </ion-item>
+  </ion-list>
+<div padding>
+    <button ion-button block>Submit</button>
+  </div>
+</ion-content>
